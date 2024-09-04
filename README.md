@@ -64,7 +64,6 @@ void main() {
   print(boundaries.end);   // Output: 2024-09-01 00:00:00.000
 }
 ```
-TODO: review the link
 
 ## API Reference
 
