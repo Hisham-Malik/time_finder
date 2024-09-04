@@ -3,28 +3,28 @@ import 'offset_dates.dart';
 
 class CurrentDates {
   static DateTime currentSecondFromNow() => OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: WeekStartDay.sunday,
         timeUnit: TimeUnit.second,
         offset: 0,
       );
 
   static DateTime currentMinuteFromNow() => OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: WeekStartDay.sunday,
         timeUnit: TimeUnit.minute,
         offset: 0,
       );
 
   static DateTime currentHourFromNow() => OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: WeekStartDay.sunday,
         timeUnit: TimeUnit.hour,
         offset: 0,
       );
 
   static DateTime currentDayFromNow() => OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: WeekStartDay.sunday,
         timeUnit: TimeUnit.day,
         offset: 0,
@@ -32,21 +32,21 @@ class CurrentDates {
 
   static DateTime currentWeekFromNow(WeekStartDay weekStartDay) =>
       OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: weekStartDay,
         timeUnit: TimeUnit.week,
         offset: 0,
       );
 
   static DateTime currentMonthFromNow() => OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: WeekStartDay.sunday,
         timeUnit: TimeUnit.month,
         offset: 0,
       );
 
   static DateTime currentYearFromNow() => OffsetDates.findDate(
-        date: DateTime.now().toUtc(),
+        date: DateTime.now(),
         weekStartDay: WeekStartDay.sunday,
         timeUnit: TimeUnit.year,
         offset: 0,

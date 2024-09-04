@@ -13,9 +13,7 @@ class RangeFinder {
         WeekDateRangeOptions.alignToWeekStart,
     WeekStartDay weekStartDay = WeekStartDay.monday,
   }) {
-    assert(startDate.isBefore(endDate) || startDate.isAtSameMomentAs(endDate),
-        'startDate must be before or the same as endDate');
-    if (startDate.isAfter(endDate)) {
+    if (startDate.isAfter(endDate) || startDate.isAtSameMomentAs(endDate)) {
       throw ArgumentError('startDate must be before or the same as endDate');
     }
     List<DateTime> resultDatesList = [];
@@ -59,7 +57,7 @@ class RangeFinder {
             );
             resultDatesList.addAll(inBetweenList);
             break;
-          case WeekDateRangeOptions.keepStartDate:
+          case WeekDateRangeOptions.alignToStartDate:
             final List<DateTime> inBetweenList = _daysBasedIntervalDivider(
               startDate: startDate,
               endDate: endDate,
@@ -85,11 +83,14 @@ class RangeFinder {
     if (includeEndDate) {
       DateTime lastDate = interval == TimeUnit.week &&
               weekDateRangeOptions == WeekDateRangeOptions.alignToWeekStart
-          ? NextDates.nextWeekFromDate(startDate, weekStartDay)
+          ? CurrentDates.currentWeekFromDate(endDate, weekStartDay)
+                  .isAtSameMomentAs(endDate)
+              ? endDate
+              : NextDates.nextWeekFromDate(endDate, weekStartDay)
           : endDate;
       resultDatesList.add(lastDate);
     }
-    return [];
+    return resultDatesList;
   }
 
   static List<DateTime> _daysBasedIntervalDivider({
@@ -107,7 +108,7 @@ class RangeFinder {
       // add to the list
       datesList.add(pivotDate);
       // move on to the interval
-      pivotDate = startDate.add(Duration(days: intervalWidth));
+      pivotDate = pivotDate.add(Duration(days: intervalWidth));
     }
     return datesList;
   }

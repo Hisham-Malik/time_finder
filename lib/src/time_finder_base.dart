@@ -1,12 +1,61 @@
-// TODO: Put public facing types in this file.
-
 import 'package:time_finder/src/current_dates.dart';
 import 'package:time_finder/src/next_dates.dart';
 import 'package:time_finder/src/offset_dates.dart';
 import 'package:time_finder/src/previous_dates.dart';
 import 'package:time_finder/src/range_finder.dart';
+import 'package:time_finder/src/unit_boundary_finder.dart';
+import 'classes/time_unit_boundaries.dart';
 import 'enums.dart';
 
+/// The `TimeFinder` class provides a comprehensive set of utilities for
+/// manipulating and querying `DateTime` objects in Dart. It offers methods
+/// to find specific time unit boundaries, calculate dates with offsets, and
+/// retrieve the start of various time units such as seconds, minutes, hours,
+/// days, weeks, months, and years.
+///
+/// ### Key Features:
+/// - **Find Specific Time Unit Boundaries:** Calculate the start and end
+///   boundaries of time units (e.g., start of the month, end of the year)
+///   based on a given date.
+/// - **Offset Date Calculation:** Move forwards or backwards in time by
+///   applying offsets to various time units, making it easy to navigate
+///   through time-related data.
+/// - **Support for Custom Week Start Days:** Customize the start day of the
+///   week when working with week-based calculations, allowing flexibility
+///   in week-based operations.
+/// - **Multiple Time Units Support:** Work with different time units
+///   including seconds, minutes, hours, days, weeks, months, and years,
+///   providing a versatile toolkit for date and time manipulation.
+///
+/// ### Example Usage:
+/// ```dart
+/// DateTime date = DateTime(2024, 8, 21, 12, 34, 56);
+///
+/// // Finding the start of the current month
+/// DateTime startOfCurrentMonth = TimeFinder.currentMonthFromDate(date);
+/// print('Start of Current Month: $startOfCurrentMonth');
+///
+/// // Finding the boundaries of the current day
+/// TimeUnitBoundaries dayBoundaries = TimeFinder.findTimeUnitBoundaries(
+///   date: date,
+///   timeUnit: TimeUnit.day,
+/// );
+/// print('Current Day Start: ${dayBoundaries.start}');
+/// print('Current Day End: ${dayBoundaries.end}');
+/// ```
+///
+/// The `TimeFinder` class is designed to be easy to use while offering
+/// advanced functionality for complex date and time manipulations. Whether
+/// you need to find the start of a week or calculate a date several months
+/// ahead, `TimeFinder` provides the tools you need.
+///
+/// ### Note:
+/// - The class includes a variety of methods to cater to different needs,
+///   such as finding the start of a specific time unit, working with offsets,
+///   and retrieving boundaries for date and time calculations.
+/// - For methods that operate with offsets, an `offset` of `0` refers to
+///   the current time unit, a positive `offset` moves forward in time,
+///   and a negative `offset` moves backward in time.
 class TimeFinder {
   /// Finds a `DateTime` by applying an offset to a specified [timeUnit] from the given [date].
   ///
@@ -17,7 +66,6 @@ class TimeFinder {
   /// The method ensures that the returned `DateTime` is aligned with the start of the specified [timeUnit].
   /// For example, if the [timeUnit] is a month and the [offset] is -1, it returns the start of the previous month.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -299,7 +347,7 @@ class TimeFinder {
   /// Example usage:
   /// ```dart
   /// DateTime nextSecond = DateFinder.nextSecondFromNow();
-  /// // If the current time is 12:34:56.789 in UTC, nextSecond will be 12:34:57.000.
+  /// // If the current time is 12:34:56.789, nextSecond will be 12:34:57.000.
   /// ```
   ///
   /// - Returns: A `DateTime` set to the start of the next second from the current local time.
@@ -414,18 +462,17 @@ class TimeFinder {
   /// This method calculates the next full second after the provided [date].
   /// It sets the milliseconds and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next second.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextSecond = DateFinder.nextSecondFromDate(DateTime(2024, 8, 21, 12, 34, 56));
-  /// // nextSecond will be 2024-08-21 12:34:57.000 in the same timezone as the input.
+  /// // nextSecond will be 2024-08-21 12:34:57.000.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///
-  /// - Returns: A `DateTime` set to the start of the next second from the given [date], preserving the original timezone.
+  /// - Returns: A `DateTime` set to the start of the next second from the given [date].
   static DateTime nextSecondFromDate(DateTime date) =>
       NextDates.nextSecondFromDate(date);
 
@@ -434,18 +481,17 @@ class TimeFinder {
   /// This method calculates the next full minute after the provided [date].
   /// It sets the seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next minute.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextMinute = DateFinder.nextMinuteFromDate(DateTime(2024, 8, 21, 12, 24, 10));
-  /// // nextMinute will be 2024-08-21 12:25:00.000 in the same timezone as the input.
+  /// // nextMinute will be 2024-08-21 12:25:00.000.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///
-  /// - Returns: A `DateTime` set to the start of the next minute from the given [date], preserving the original timezone.
+  /// - Returns: A `DateTime` set to the start of the next minute from the given [date].
   static DateTime nextMinuteFromDate(DateTime date) =>
       NextDates.nextMinuteFromDate(date);
 
@@ -454,18 +500,17 @@ class TimeFinder {
   /// This method calculates the next full hour after the provided [date].
   /// It sets the minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next hour.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextHour = DateFinder.nextHourFromDate(DateTime(2024, 8, 21, 12, 34, 56));
-  /// // nextHour will be 2024-08-21 13:00:00.000 in the same timezone as the input.
+  /// // nextHour will be 2024-08-21 13:00:00.000.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///
-  /// - Returns: A `DateTime` set to the start of the next hour from the given [date], preserving the original timezone.
+  /// - Returns: A `DateTime` set to the start of the next hour from the given [date].
   static DateTime nextHourFromDate(DateTime date) =>
       NextDates.nextHourFromDate(date);
 
@@ -474,18 +519,17 @@ class TimeFinder {
   /// This method calculates the next full day after the provided [date].
   /// It sets the hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next day.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextDay = DateFinder.nextDayFromDate(DateTime(2024, 8, 21, 12, 34, 56));
-  /// // nextDay will be 2024-08-22 00:00:00.000 in the same timezone as the input.
+  /// // nextDay will be 2024-08-22 00:00:00.000.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///
-  /// - Returns: A `DateTime` set to the start of the next day from the given [date], preserving the original timezone.
+  /// - Returns: A `DateTime` set to the start of the next day from the given [date].
   static DateTime nextDayFromDate(DateTime date) =>
       NextDates.nextDayFromDate(date);
 
@@ -495,20 +539,20 @@ class TimeFinder {
   /// aligned to the specified day of the week that marks the beginning of the week.
   /// It sets the hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next week.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextWeek = DateFinder.nextWeekFromDate(DateTime(2024, 8, 21, 12, 34, 56), WeekStartDay.monday);
-  /// // If the week starts on Monday, nextWeek will be Monday, August 26th, 2024, 00:00:00 in the same timezone as the input.
+  /// // If the week starts on Monday, nextWeek will be Monday, August 26th, 2024, 00:00:00.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///   - [weekStartDay]: The day of the week that the user specifies as the start of the week (e.g., Sunday or Monday).
   ///
-  /// - Returns: A `DateTime` set to the start of the next week from the given [date], based on the specified [weekStartDay], preserving the original timezone.
-  static DateTime nextWeekFromDate(DateTime date, WeekStartDay weekStartDay) =>
+  /// - Returns: A `DateTime` set to the start of the next week from the given [date], based on the specified [weekStartDay].
+  static DateTime nextWeekFromDate(
+          {required DateTime date, required WeekStartDay weekStartDay}) =>
       NextDates.nextWeekFromDate(
         date,
         weekStartDay,
@@ -519,18 +563,17 @@ class TimeFinder {
   /// This method calculates the start of the next month after the provided [date].
   /// It sets the day, hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next month.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextMonth = DateFinder.nextMonthFromDate(DateTime(2024, 8, 21, 12, 34, 56));
-  /// // nextMonth will be 2024-09-01 00:00:00.000 in the same timezone as the input.
+  /// // nextMonth will be 2024-09-01 00:00:00.000.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///
-  /// - Returns: A `DateTime` set to the start of the next month from the given [date], preserving the original timezone.
+  /// - Returns: A `DateTime` set to the start of the next month from the given [date].
   static DateTime nextMonthFromDate(DateTime date) =>
       NextDates.nextMonthFromDate(date);
 
@@ -539,18 +582,17 @@ class TimeFinder {
   /// This method calculates the start of the next year after the provided [date].
   /// It sets the month, day, hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the next year.
-  /// The timezone of the returned `DateTime` will match the timezone of the input [date].
   ///
   /// Example usage:
   /// ```dart
   /// DateTime nextYear = DateFinder.nextYearFromDate(DateTime(2024, 8, 21, 12, 34, 56));
-  /// // nextYear will be 2025-01-01 00:00:00.000 in the same timezone as the input.
+  /// // nextYear will be 2025-01-01 00:00:00.000.
   /// ```
   ///
   /// - Parameters:
   ///   - [date]: The original `DateTime` from which the calculation starts.
   ///
-  /// - Returns: A `DateTime` set to the start of the next year from the given [date], preserving the original timezone.
+  /// - Returns: A `DateTime` set to the start of the next year from the given [date].
   static DateTime nextYearFromDate(DateTime date) =>
       NextDates.nextYearFromDate(date);
 
@@ -675,9 +717,6 @@ class TimeFinder {
   /// setting the milliseconds and microseconds to zero, ensuring that the returned `DateTime`
   /// is aligned to the start of that specific second.
   ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
-  ///
   /// Example usage:
   /// ```dart
   /// DateTime givenDate = DateTime(2024, 8, 21, 12, 34, 56, 789);
@@ -696,9 +735,6 @@ class TimeFinder {
   /// This method calculates the beginning of the minute based on the given [date],
   /// setting the seconds, milliseconds, and microseconds to zero, ensuring that the returned `DateTime`
   /// is aligned to the start of that specific minute.
-  ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
   ///
   /// Example usage:
   /// ```dart
@@ -719,9 +755,6 @@ class TimeFinder {
   /// setting the minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned `DateTime`
   /// is aligned to the start of that specific hour.
   ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
-  ///
   /// Example usage:
   /// ```dart
   /// DateTime givenDate = DateTime(2024, 8, 21, 12, 34, 56, 789);
@@ -740,9 +773,6 @@ class TimeFinder {
   /// This method calculates the beginning of the day based on the given [date],
   /// setting the hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned `DateTime`
   /// is aligned to the start of that specific day.
-  ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
   ///
   /// Example usage:
   /// ```dart
@@ -763,9 +793,6 @@ class TimeFinder {
   /// This method calculates the start of the week based on the given [date], aligning it to the
   /// specified [weekStartDay]. The time components (hour, minutes, seconds, milliseconds, and microseconds)
   /// are set to zero, ensuring that the returned `DateTime` is at the very beginning of that specific week.
-  ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
   ///
   /// Example usage:
   /// ```dart
@@ -791,9 +818,6 @@ class TimeFinder {
   /// setting the day, hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned `DateTime`
   /// is aligned to the start of that specific month.
   ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
-  ///
   /// Example usage:
   /// ```dart
   /// DateTime givenDate = DateTime(2024, 8, 21, 12, 34, 56, 789);
@@ -812,9 +836,6 @@ class TimeFinder {
   /// This method calculates the beginning of the year based on the given [date],
   /// setting the month, day, hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned `DateTime`
   /// is aligned to the start of that specific year.
-  ///
-  /// If the [date] is in UTC, the returned `DateTime` will be in UTC. Otherwise, it will be converted
-  /// to the local time zone.
   ///
   /// Example usage:
   /// ```dart
@@ -945,7 +966,6 @@ class TimeFinder {
   /// It sets the milliseconds and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous second.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -966,7 +986,6 @@ class TimeFinder {
   /// It sets the seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous minute.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -987,7 +1006,6 @@ class TimeFinder {
   /// It sets the minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous hour.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -1008,7 +1026,6 @@ class TimeFinder {
   /// It sets the hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous day.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -1030,7 +1047,6 @@ class TimeFinder {
   /// It sets the hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous week.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -1055,7 +1071,6 @@ class TimeFinder {
   /// It sets the day, hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous month.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -1076,7 +1091,6 @@ class TimeFinder {
   /// It sets the month, day, hour, minutes, seconds, milliseconds, and microseconds to zero, ensuring that the returned
   /// `DateTime` is at the very beginning of the previous year.
   ///
-  /// The returned `DateTime` will be in UTC if the input [date] is in UTC, and in local time if the input [date] is in local time.
   ///
   /// Example usage:
   /// ```dart
@@ -1126,11 +1140,7 @@ class TimeFinder {
   /// - Returns: A list of `DateTime` objects representing the range of dates between the [startDate] and [endDate].
   ///
   /// - Throws:
-  ///   - `ArgumentError` if [startDate] and [endDate] are not in the same timezone.
-  ///   - `ArgumentError` if [startDate] is after [endDate].
-  ///
-  /// - Notes:
-  ///   - The timezone of the returned dates will match the timezone of the [startDate] and [endDate], whether it is UTC or local time.
+  ///   - `ArgumentError` if [startDate] is after or the same as [endDate].
   static List<DateTime> findDateRange({
     required DateTime startDate,
     required DateTime endDate,
@@ -1141,27 +1151,129 @@ class TimeFinder {
         WeekDateRangeOptions.alignToWeekStart,
     WeekStartDay weekStartDay = WeekStartDay.monday,
   }) {
-    assert(
-        (startDate.isUtc && endDate.isUtc) ||
-            (!startDate.isUtc && !endDate.isUtc),
-        'startDate and endDate must be in the same timezone');
-    if (!((startDate.isUtc && endDate.isUtc) ||
-        (!startDate.isUtc && !endDate.isUtc))) {
-      throw ArgumentError('startDate and endDate must be in the same timezone');
-    }
-    assert(startDate.isBefore(endDate) || startDate.isAtSameMomentAs(endDate),
-        'startDate must be before or the same as endDate');
-    if (startDate.isAfter(endDate)) {
-      throw ArgumentError('startDate must be before or the same as endDate');
+    if (startDate.isAfter(endDate) || startDate.isAtSameMomentAs(endDate)) {
+      throw ArgumentError('startDate must be before endDate');
     }
     return RangeFinder.findDateRange(
       startDate: startDate,
       endDate: endDate,
       interval: interval,
       weekStartDay: weekStartDay,
-      includeEndDate: includeStartDate,
+      includeEndDate: includeEndDate,
       includeStartDate: includeStartDate,
       weekDateRangeOptions: weekDateRangeOptions,
     );
   }
+
+  /// Finds the start and end boundaries of the specified time unit for the given date.
+  ///
+  /// This method returns the start and end boundaries of the time unit
+  /// (e.g., day, week, month, year) that the provided `date` falls within.
+  /// The boundaries are calculated based on the specified time unit and
+  /// the starting day of the week if the time unit is a week.
+  ///
+  /// The returned boundaries are in the form of a `TimeUnitBoundaries` object,
+  /// which contains:
+  /// - `start`: The start of the specified time unit. For example, if the
+  ///   `timeUnit` is `month`, `start` will be the first moment of the first day
+  ///   of that month.
+  /// - `end`: The end of the specified time unit, which is the very start of
+  ///   the next time unit. For example, if the `timeUnit` is `month`, `end`
+  ///   will be the very start of the first day of the next month.
+  /// - `originDate`: The original `date` passed to the method.
+
+  ///
+  /// If `timeUnit` is `TimeUnit.week`, the `weekStartDay` parameter determines
+  /// the day on which the week starts. By default, this is set to Monday.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// DateTime date = DateTime.now();
+  /// TimeUnitBoundaries boundaries = findTimeUnitBoundaries(
+  ///   date: date,
+  ///   timeUnit: TimeUnit.month,
+  /// );
+  /// // boundaries.start will be the first day of the current month.
+  /// // boundaries.end will be the last day of the current month.
+  /// // boundaries.originDate will be the original date passed in.
+  /// ```
+  ///
+  /// Parameters:
+  /// - `date` (`DateTime`): The date for which to find the time unit boundaries.
+  /// - `timeUnit` (`TimeUnit`): The time unit (e.g., day, week, month, year) to find the boundaries for.
+  /// - `weekStartDay` (`WeekStartDay`): The day on which the week starts, used only if the `timeUnit` is `week`.
+  ///
+  /// Returns:
+  /// - `TimeUnitBoundaries`: An object containing the start, end, and the original date.
+  static TimeUnitBoundaries findTimeUnitBoundaries({
+    required DateTime date,
+    required TimeUnit timeUnit,
+    WeekStartDay weekStartDay = WeekStartDay.monday,
+  }) =>
+      UnitBoundaryFinder.findBoundaries(
+        date: date,
+        timeUnit: timeUnit,
+        offset: 0,
+      );
+
+  /// Finds the start and end boundaries of the specified time unit for the given date,
+  /// applying an offset to the time unit.
+  ///
+  /// This method returns the start and end boundaries of the time unit
+  /// (e.g., day, week, month, year) that is offset from the provided `date`
+  /// by the specified `offset`. The boundaries are calculated based on the
+  /// specified time unit and the starting day of the week if the time unit is a week.
+  ///
+  /// The returned boundaries are in the form of a `TimeUnitBoundaries` object,
+  /// which contains:
+  /// - `start`: The start of the specified time unit, adjusted by the `offset`.
+  ///   - If the `offset` is 0, `start` will be the start of the current time unit.
+  ///   - If the `offset` is positive, `start` will be shifted forward by that number of time units.
+  ///   - If the `offset` is negative, `start` will be shifted backward by that number of time units.
+  /// - `end`: The end of the specified time unit, also adjusted by the `offset`.
+  ///   - If the `offset` is 0, `end` will be the start of the next time unit.
+  ///   - If the `offset` is positive, `end` will be the start of the time unit following the adjusted `start`.
+  ///   - If the `offset` is negative, `end` will be the start of the time unit following the adjusted `start`.
+  /// - `originDate`: The original `date` passed to the method.
+  ///
+  /// If `timeUnit` is `TimeUnit.week`, the `weekStartDay` parameter determines
+  /// the day on which the week starts. By default, this is set to Monday.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// DateTime date = DateTime.now();
+  /// TimeUnitBoundaries boundaries = findTimeUnitBoundariesWithOffset(
+  ///   date: date,
+  ///   timeUnit: TimeUnit.month,
+  ///   offset: 1,
+  /// );
+  /// // boundaries.start will be the first day of the next month.
+  /// // boundaries.end will be the very start of the first day of the month after the next month.
+  /// // boundaries.originDate will be the original date passed in.
+  /// ```
+  ///
+  /// If the `offset` is 0, the boundaries will correspond to the current time unit.
+  /// If the `offset` is positive, the boundaries will be for a future time unit.
+  /// If the `offset` is negative, the boundaries will be for a past time unit.
+  ///
+  /// Parameters:
+  /// - `date` (`DateTime`): The date for which to find the time unit boundaries.
+  /// - `timeUnit` (`TimeUnit`): The time unit (e.g., day, week, month, year) to find the boundaries for.
+  /// - `offset` (`int`): The number of time units to offset from the original date.
+  /// - `weekStartDay` (`WeekStartDay`): The day on which the week starts, used only if the `timeUnit` is `week`.
+  ///
+  /// Returns:
+  /// - `TimeUnitBoundaries`: An object containing the start, end, and the original date.
+  static TimeUnitBoundaries findTimeUnitBoundariesWithOffset({
+    required DateTime date,
+    required TimeUnit timeUnit,
+    required int offset,
+    WeekStartDay weekStartDay = WeekStartDay.monday,
+  }) =>
+      UnitBoundaryFinder.findBoundaries(
+        date: date,
+        timeUnit: timeUnit,
+        offset: offset,
+        weekStartDay: weekStartDay,
+      );
 }

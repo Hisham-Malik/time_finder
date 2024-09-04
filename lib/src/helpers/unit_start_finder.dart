@@ -16,23 +16,17 @@ class UnitStartFinder {
         TimeUnit.year => _getYearStart(date),
       };
 
-  static DateTime _getSecondStart(DateTime date) => date.isUtc
-      ? DateTime.utc(
-          date.year, date.month, date.day, date.hour, date.minute, date.second)
-      : DateTime(
-          date.year, date.month, date.day, date.hour, date.minute, date.second);
+  static DateTime _getSecondStart(DateTime date) => DateTime(
+      date.year, date.month, date.day, date.hour, date.minute, date.second);
 
-  static DateTime _getMinuteStart(DateTime date) => date.isUtc
-      ? DateTime.utc(date.year, date.month, date.day, date.hour, date.minute)
-      : DateTime(date.year, date.month, date.day, date.hour, date.minute);
+  static DateTime _getMinuteStart(DateTime date) =>
+      DateTime(date.year, date.month, date.day, date.hour, date.minute);
 
-  static DateTime _getHourStart(DateTime date) => date.isUtc
-      ? DateTime.utc(date.year, date.month, date.day, date.hour)
-      : DateTime(date.year, date.month, date.day, date.hour);
+  static DateTime _getHourStart(DateTime date) =>
+      DateTime(date.year, date.month, date.day, date.hour);
 
-  static DateTime _getDayStart(DateTime date) => date.isUtc
-      ? DateTime.utc(date.year, date.month, date.day)
-      : DateTime(date.year, date.month, date.day);
+  static DateTime _getDayStart(DateTime date) =>
+      DateTime(date.year, date.month, date.day);
 
   static DateTime _getWeekStart(DateTime date, WeekStartDay weekStartDay) {
     final DateTime startOfDay = _getDayStart(date);
@@ -41,12 +35,10 @@ class UnitStartFinder {
     return startOfWeek;
   }
 
-  static DateTime _getMonthStart(DateTime date) => date.isUtc
-      ? DateTime.utc(date.year, date.month, 1)
-      : DateTime(date.year, date.month, 1);
+  static DateTime _getMonthStart(DateTime date) =>
+      DateTime(date.year, date.month, 1);
 
-  static DateTime _getYearStart(DateTime date) =>
-      date.isUtc ? DateTime.utc(date.year, 1, 1) : DateTime(date.year, 1, 1);
+  static DateTime _getYearStart(DateTime date) => DateTime(date.year, 1, 1);
 
   /// calculates the offset between the date and the start of the week
   /// e.g... if the first day of the week is sunday and the given date is friday the offset is 5
