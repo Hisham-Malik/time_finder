@@ -21,7 +21,7 @@ jobs:
 
       - name: Publish package
         env:
-          PUB_TOKEN: ${{ secrets.CREDENTIAL_JSON }}
+          PUB_TOKEN: ${{ secrets.PUB_TOKEN }}
         run: |
           dart pub publish --force
     environment:
