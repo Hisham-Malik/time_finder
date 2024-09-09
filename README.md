@@ -10,13 +10,20 @@
 - **Handle Multiple Time Units:** Work with different time units including seconds, minutes, hours, days, weeks, months, and years.
 - **Flexible and Powerful API:** Designed to be easy to use while offering advanced functionality for complex date manipulations.
 
+## Use Cases
+
+- **Reporting** Calculate the start and end of days, weeks, months, or years to generate accurate reports and summaries.
+- **Event Scheduling** Determine exact time boundaries to plan and schedule events, tasks, or billing cycles.
+- **Time-Based Analytics** Segment and analyze time-series data by day, week, month, or year for detailed insights.
+- **Handling Offsets** Calculate time unit boundaries with specific offsets for future planning or historical analysis.
+
 ## Getting started
 
 Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  time_finder: ^1.0.0
+  time_finder: ^1.0.1
 ```
 
 Then, run `dart pub get` to install the package.

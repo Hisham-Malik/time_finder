@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the findDateRange method from the TimeFinder class, for the Dart programming language.">
+  <title>findDateRange method - TimeFinder class - time_finder library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">time_finder</a></li>
+    <li><a href="../../time_finder/time_finder-library.html">time_finder.dart</a></li>
+    <li><a href="../../time_finder/TimeFinder-class.html">TimeFinder</a></li>
+    <li class="self-crumb">findDateRange static method</li>
+  </ol>
+  <div class="self-name">findDateRange</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="time_finder&#47;TimeFinder-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">findDateRange</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span>
+<span class="name ">findDateRange</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="findDateRange-param-startDate">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">startDate</span>, </span></li>
+<li><span class="parameter" id="findDateRange-param-endDate"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">endDate</span>, </span></li>
+<li><span class="parameter" id="findDateRange-param-interval"><span>required</span> <span class="type-annotation"><a href="../../time_finder/TimeUnit.html">TimeUnit</a></span> <span class="parameter-name">interval</span>, </span></li>
+<li><span class="parameter" id="findDateRange-param-includeStartDate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeStartDate</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="findDateRange-param-includeEndDate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeEndDate</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="findDateRange-param-weekDateRangeOptions"><span class="type-annotation"><a href="../../time_finder/WeekDateRangeOptions.html">WeekDateRangeOptions</a></span> <span class="parameter-name">weekDateRangeOptions</span> = <span class="default-value">WeekDateRangeOptions.alignToWeekStart</span>, </span></li>
+<li><span class="parameter" id="findDateRange-param-weekStartDay"><span class="type-annotation"><a href="../../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span> = <span class="default-value">WeekStartDay.monday</span>}</span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Returns a list of <code>DateTime</code> objects representing a range of dates between the specified <code>startDate</code> and <code>endDate</code>.</p>
+<p>The dates in the range are calculated based on the provided <code>interval</code>, which can be seconds, minutes, hours, days, weeks, months, or years.
+The method can include or exclude the <code>startDate</code> and <code>endDate</code> based on the <code>includeStartDate</code> and <code>includeEndDate</code> parameters.</p>
+<p>For the "week" interval, the method offers options for how to handle the range when the <code>startDate</code> is in the middle of the week.
+By default, the range will align to the start of the week as specified by <code>weekStartDay</code>. However, you can customize this behavior using <code>weekDateRangeOptions</code>.</p>
+<p>Example usage:</p>
+<pre class="language-dart"><code class="language-dart">DateTime startDate = DateTime(2024, 8, 21);
+DateTime endDate = DateTime(2024, 9, 21);
+
+List&lt;DateTime&gt; dateRange = DateFinder.findDateRange(
+  startDate: startDate,
+  endDate: endDate,
+  interval: TimeUnit.day,
+  includeStartDate: true,
+  includeEndDate: false,
+);
+// The list will contain dates from the start date to one day before the end date.
+</code></pre>
+<ul>
+<li>
+<p>Parameters:</p>
+<ul>
+<li><code>startDate</code>: The <code>DateTime</code> representing the beginning of the range. If <code>includeStartDate</code> is true, this date will be included in the result.</li>
+<li><code>endDate</code>: The <code>DateTime</code> representing the end of the range. If <code>includeEndDate</code> is true, this date will be included in the result.</li>
+<li><code>interval</code>: The <code>TimeUnit</code> to determine the interval between dates in the range. This can be seconds, minutes, hours, days, weeks, months, or years.</li>
+<li><code>includeStartDate</code>: A boolean indicating whether the <code>startDate</code> should be included in the result. Defaults to true.</li>
+<li><code>includeEndDate</code>: A boolean indicating whether the <code>endDate</code> should be included in the result. Defaults to true.</li>
+<li><code>weekDateRangeOptions</code>: Specifies how to handle the range if <code>interval</code> is set to weeks, especially when <code>startDate</code> is not at the start of the week. Defaults to aligning to the start of the week.</li>
+<li><code>weekStartDay</code>: The day of the week considered as the start of the week. Defaults to Monday.</li>
+</ul>
+</li>
+<li>
+<p>Returns: A list of <code>DateTime</code> objects representing the range of dates between the <code>startDate</code> and <code>endDate</code>.</p>
+</li>
+<li>
+<p>Throws:</p>
+<ul>
+<li><code>ArgumentError</code> if <code>startDate</code> is after or the same as <code>endDate</code>.</li>
+</ul>
+</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static List&lt;DateTime&gt; findDateRange({
+  required DateTime startDate,
+  required DateTime endDate,
+  required TimeUnit interval,
+  bool includeStartDate = true,
+  bool includeEndDate = true,
+  WeekDateRangeOptions weekDateRangeOptions =
+      WeekDateRangeOptions.alignToWeekStart,
+  WeekStartDay weekStartDay = WeekStartDay.monday,
+}) {
+  if (startDate.isAfter(endDate) || startDate.isAtSameMomentAs(endDate)) {
+    throw ArgumentError(&#39;startDate must be before endDate&#39;);
+  }
+  return RangeFinder.findDateRange(
+    startDate: startDate,
+    endDate: endDate,
+    interval: interval,
+    weekStartDay: weekStartDay,
+    includeEndDate: includeEndDate,
+    includeStartDate: includeStartDate,
+    weekDateRangeOptions: weekDateRangeOptions,
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">time_finder</a></li>
+    <li><a href="../../time_finder/time_finder-library.html">time_finder</a></li>
+    <li><a href="../../time_finder/TimeFinder-class.html">TimeFinder</a></li>
+    <li class="self-crumb">findDateRange static method</li>
+</ol>
+
+
+    <h5>TimeFinder class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    time_finder
+      1.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

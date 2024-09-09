@@ -1,6 +1,6 @@
 name: time_finder
-description: A Dart package providing powerful utilities for manipulating and querying DateTime objects. Easily calculate time unit boundaries, apply date offsets, and work with custom time units such as seconds, minutes, hours, days, weeks, months, and years.
-version: 1.0.0
+description: A Dart package for DateTime manipulation boundary calculations, offsets, and time unit handling.
+version: 1.0.1
 repository: https://github.com/Hisham-Malik/time_finder
 homepage: https://github.com/Hisham-Malik/time_finder
 issue_tracker: https://github.com/Hisham-Malik/time_finder/issues
@@ -16,5 +16,6 @@ dependencies:
   # path: ^1.8.0
 
 dev_dependencies:
+  dartdoc: ^8.1.0
   lints: ^4.0.0
   test: ^1.24.0

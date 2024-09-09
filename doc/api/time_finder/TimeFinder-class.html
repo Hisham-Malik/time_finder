@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the TimeFinder class from the time_finder library, for the Dart programming language.">
+  <title>TimeFinder class - time_finder library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">time_finder</a></li>
+    <li><a href="../time_finder/time_finder-library.html">time_finder.dart</a></li>
+    <li class="self-crumb">TimeFinder class</li>
+  </ol>
+  <div class="self-name">TimeFinder</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="time_finder&#47;time_finder-library-sidebar.html"
+    data-below-sidebar="time_finder&#47;TimeFinder-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">TimeFinder</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>The <code>TimeFinder</code> class provides a comprehensive set of utilities for
+manipulating and querying <code>DateTime</code> objects in Dart. It offers methods
+to find specific time unit boundaries, calculate dates with offsets, and
+retrieve the start of various time units such as seconds, minutes, hours,
+days, weeks, months, and years.</p>
+<h3 id="key-features">Key Features:</h3>
+<ul>
+<li><strong>Find Specific Time Unit Boundaries:</strong> Calculate the start and end
+boundaries of time units (e.g., start of the month, end of the year)
+based on a given date.</li>
+<li><strong>Offset Date Calculation:</strong> Move forwards or backwards in time by
+applying offsets to various time units, making it easy to navigate
+through time-related data.</li>
+<li><strong>Support for Custom Week Start Days:</strong> Customize the start day of the
+week when working with week-based calculations, allowing flexibility
+in week-based operations.</li>
+<li><strong>Multiple Time Units Support:</strong> Work with different time units
+including seconds, minutes, hours, days, weeks, months, and years,
+providing a versatile toolkit for date and time manipulation.</li>
+</ul>
+<h3 id="example-usage">Example Usage:</h3>
+<pre class="language-dart"><code class="language-dart">DateTime date = DateTime(2024, 8, 21, 12, 34, 56);
+
+// Finding the start of the current month
+DateTime startOfCurrentMonth = TimeFinder.currentMonthFromDate(date);
+print('Start of Current Month: $startOfCurrentMonth');
+
+// Finding the boundaries of the current day
+TimeUnitBoundaries dayBoundaries = TimeFinder.findTimeUnitBoundaries(
+  date: date,
+  timeUnit: TimeUnit.day,
+);
+print('Current Day Start: ${dayBoundaries.start}');
+print('Current Day End: ${dayBoundaries.end}');
+</code></pre>
+<p>The <code>TimeFinder</code> class is designed to be easy to use while offering
+advanced functionality for complex date and time manipulations. Whether
+you need to find the start of a week or calculate a date several months
+ahead, <code>TimeFinder</code> provides the tools you need.</p>
+<h3 id="note">Note:</h3>
+<ul>
+<li>The class includes a variety of methods to cater to different needs,
+such as finding the start of a specific time unit, working with offsets,
+and retrieving boundaries for date and time calculations.</li>
+<li>For methods that operate with offsets, an <code>offset</code> of <code>0</code> refers to
+the current time unit, a positive <code>offset</code> moves forward in time,
+and a negative <code>offset</code> moves backward in time.</li>
+</ul>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+
+    <dl class="constructor-summary-list">
+        <dt id="TimeFinder" class="callable">
+          <span class="name"><a href="../time_finder/TimeFinder/TimeFinder.html">TimeFinder</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="currentDayFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentDayFromDate.html">currentDayFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentDayFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the day for the provided <code>date</code>.
+  
+
+</dd>
+
+        <dt id="currentDayFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentDayFromNow.html">currentDayFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current day from the current local time.
+  
+
+</dd>
+
+        <dt id="currentHourFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentHourFromDate.html">currentHourFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentHourFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the hour for the provided <code>date</code>.
+  
+
+</dd>
+
+        <dt id="currentHourFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentHourFromNow.html">currentHourFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current hour from the current local time.
+  
+
+</dd>
+
+        <dt id="currentMinuteFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentMinuteFromDate.html">currentMinuteFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentMinuteFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the minute for the provided <code>date</code>.
+  
+
+</dd>
+
+        <dt id="currentMinuteFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentMinuteFromNow.html">currentMinuteFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current minute from the current local time.
+  
+
+</dd>
+
+        <dt id="currentMonthFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentMonthFromDate.html">currentMonthFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentMonthFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the month for the provided <code>date</code>.
+  
+
+</dd>
+
+        <dt id="currentMonthFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentMonthFromNow.html">currentMonthFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current month from the current local time.
+  
+
+</dd>
+
+        <dt id="currentSecondFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentSecondFromDate.html">currentSecondFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentSecondFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the second for the provided <code>date</code>.
+  
+
+</dd>
+
+        <dt id="currentSecondFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentSecondFromNow.html">currentSecondFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current second from the current local time.
+  
+
+</dd>
+
+        <dt id="currentWeekFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentWeekFromDate.html">currentWeekFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentWeekFromDate-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="currentWeekFromDate-param-weekStartDay"><span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the week for the provided <code>date</code>,
+aligned to the specified <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="currentWeekFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentWeekFromNow.html">currentWeekFromNow</a></span><span class="signature">(<wbr><span class="parameter" id="currentWeekFromNow-param-weekStartDay">{<span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current week from the current time, based on the specified <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="currentYearFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentYearFromDate.html">currentYearFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="currentYearFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the year for the provided <code>date</code>.
+  
+
+</dd>
+
+        <dt id="currentYearFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/currentYearFromNow.html">currentYearFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the current year from the current local time.
+  
+
+</dd>
+
+        <dt id="findDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findDate.html">findDate</a></span><span class="signature">(<wbr><span class="parameter" id="findDate-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findDate-param-timeUnit"><span>required</span> <span class="type-annotation"><a href="../time_finder/TimeUnit.html">TimeUnit</a></span> <span class="parameter-name">timeUnit</span>, </span><span class="parameter" id="findDate-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="findDate-param-weekStartDay"><span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span> = <span class="default-value">WeekStartDay.monday</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a <code>DateTime</code> by applying an offset to a specified <code>timeUnit</code> from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="findDateRange" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findDateRange.html">findDateRange</a></span><span class="signature">(<wbr><span class="parameter" id="findDateRange-param-startDate">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">startDate</span>, </span><span class="parameter" id="findDateRange-param-endDate"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">endDate</span>, </span><span class="parameter" id="findDateRange-param-interval"><span>required</span> <span class="type-annotation"><a href="../time_finder/TimeUnit.html">TimeUnit</a></span> <span class="parameter-name">interval</span>, </span><span class="parameter" id="findDateRange-param-includeStartDate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeStartDate</span> = <span class="default-value">true</span>, </span><span class="parameter" id="findDateRange-param-includeEndDate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeEndDate</span> = <span class="default-value">true</span>, </span><span class="parameter" id="findDateRange-param-weekDateRangeOptions"><span class="type-annotation"><a href="../time_finder/WeekDateRangeOptions.html">WeekDateRangeOptions</a></span> <span class="parameter-name">weekDateRangeOptions</span> = <span class="default-value">WeekDateRangeOptions.alignToWeekStart</span>, </span><span class="parameter" id="findDateRange-param-weekStartDay"><span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span> = <span class="default-value">WeekStartDay.monday</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a list of <code>DateTime</code> objects representing a range of dates between the specified <code>startDate</code> and <code>endDate</code>.
+  
+
+</dd>
+
+        <dt id="findDayWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findDayWithOffset.html">findDayWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findDayWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findDayWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in days.
+If the <code>offset</code> is 0, the method returns the start of the current day (e.g., if the time is 5:53:27,
+the returned time will be 00:00:00 of the same day).
+  
+
+</dd>
+
+        <dt id="findHourWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findHourWithOffset.html">findHourWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findHourWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findHourWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in hours.
+If the <code>offset</code> is 0, the method returns the start of the current hour (e.g., if the time is 5:53,
+the returned time will be 5:00).
+  
+
+</dd>
+
+        <dt id="findMinuteWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findMinuteWithOffset.html">findMinuteWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findMinuteWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findMinuteWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in minutes.
+If the <code>offset</code> is 0, the method returns the start of the current minute (e.g., if the time is 5:53:27,
+the returned time will be 5:53:00).
+  
+
+</dd>
+
+        <dt id="findMonthWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findMonthWithOffset.html">findMonthWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findMonthWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findMonthWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in months.
+If the <code>offset</code> is 0, the method returns the start of the current month (e.g., if the date is June 15th,
+the returned date will be June 1st at 00:00:00).
+  
+
+</dd>
+
+        <dt id="findSecondWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findSecondWithOffset.html">findSecondWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findSecondWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findSecondWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in seconds.
+If the <code>offset</code> is 0, the method returns the start of the current second (e.g., if the time is 5:53:27.456,
+the returned time will be 5:53:27.000).
+  
+
+</dd>
+
+        <dt id="findTimeUnitBoundaries" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findTimeUnitBoundaries.html">findTimeUnitBoundaries</a></span><span class="signature">(<wbr><span class="parameter" id="findTimeUnitBoundaries-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findTimeUnitBoundaries-param-timeUnit"><span>required</span> <span class="type-annotation"><a href="../time_finder/TimeUnit.html">TimeUnit</a></span> <span class="parameter-name">timeUnit</span>, </span><span class="parameter" id="findTimeUnitBoundaries-param-weekStartDay"><span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span> = <span class="default-value">WeekStartDay.monday</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../time_finder/TimeUnitBoundaries-class.html">TimeUnitBoundaries</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds the start and end boundaries of the specified time unit for the given date.
+  
+
+</dd>
+
+        <dt id="findTimeUnitBoundariesWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findTimeUnitBoundariesWithOffset.html">findTimeUnitBoundariesWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findTimeUnitBoundariesWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findTimeUnitBoundariesWithOffset-param-timeUnit"><span>required</span> <span class="type-annotation"><a href="../time_finder/TimeUnit.html">TimeUnit</a></span> <span class="parameter-name">timeUnit</span>, </span><span class="parameter" id="findTimeUnitBoundariesWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="findTimeUnitBoundariesWithOffset-param-weekStartDay"><span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span> = <span class="default-value">WeekStartDay.monday</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="../time_finder/TimeUnitBoundaries-class.html">TimeUnitBoundaries</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds the start and end boundaries of the specified time unit for the given date,
+applying an offset to the time unit.
+  
+
+</dd>
+
+        <dt id="findWeekWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findWeekWithOffset.html">findWeekWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findWeekWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findWeekWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="findWeekWithOffset-param-weekStartDay"><span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in weeks, considering the starting day of the week.
+If the <code>offset</code> is 0, the method returns the start of the current week, based on the provided <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="findYearWithOffset" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/findYearWithOffset.html">findYearWithOffset</a></span><span class="signature">(<wbr><span class="parameter" id="findYearWithOffset-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="findYearWithOffset-param-offset"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds a new <code>DateTime</code> by adjusting the given <code>date</code> by a specified <code>offset</code> in years.
+If the <code>offset</code> is 0, the method returns the start of the current year (e.g., if the date is June 15th,
+the returned date will be January 1st at 00:00:00).
+  
+
+</dd>
+
+        <dt id="nextDayFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextDayFromDate.html">nextDayFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextDayFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next day from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="nextDayFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextDayFromNow.html">nextDayFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next day from the current local time.
+  
+
+</dd>
+
+        <dt id="nextHourFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextHourFromDate.html">nextHourFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextHourFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next hour from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="nextHourFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextHourFromNow.html">nextHourFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next hour from the current local time.
+  
+
+</dd>
+
+        <dt id="nextMinuteFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextMinuteFromDate.html">nextMinuteFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextMinuteFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next minute from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="nextMinuteFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextMinuteFromNow.html">nextMinuteFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next minute from the current local time.
+  
+
+</dd>
+
+        <dt id="nextMonthFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextMonthFromDate.html">nextMonthFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextMonthFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next month from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="nextMonthFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextMonthFromNow.html">nextMonthFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next month from the current local time.
+  
+
+</dd>
+
+        <dt id="nextSecondFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextSecondFromDate.html">nextSecondFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextSecondFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next second from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="nextSecondFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextSecondFromNow.html">nextSecondFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next second from the current local time.
+  
+
+</dd>
+
+        <dt id="nextWeekFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextWeekFromDate.html">nextWeekFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextWeekFromDate-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="nextWeekFromDate-param-weekStartDay"><span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next week from the given <code>date</code>, based on the specified <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="nextWeekFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextWeekFromNow.html">nextWeekFromNow</a></span><span class="signature">(<wbr><span class="parameter" id="nextWeekFromNow-param-weekStartDay">{<span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next week from the current time, based on the specified <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="nextYearFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextYearFromDate.html">nextYearFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="nextYearFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next year from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="nextYearFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/nextYearFromNow.html">nextYearFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the next year from the current local time.
+  
+
+</dd>
+
+        <dt id="previousDayFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousDayFromDate.html">previousDayFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousDayFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous day from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="previousDayFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousDayFromNow.html">previousDayFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous day from the current local time.
+  
+
+</dd>
+
+        <dt id="previousHourFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousHourFromDate.html">previousHourFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousHourFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous hour from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="previousHourFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousHourFromNow.html">previousHourFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous hour from the current local time.
+  
+
+</dd>
+
+        <dt id="previousMinuteFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousMinuteFromDate.html">previousMinuteFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousMinuteFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous minute from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="previousMinuteFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousMinuteFromNow.html">previousMinuteFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous minute from the current local time.
+  
+
+</dd>
+
+        <dt id="previousMonthFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousMonthFromDate.html">previousMonthFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousMonthFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous month from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="previousMonthFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousMonthFromNow.html">previousMonthFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous month from the current local time.
+  
+
+</dd>
+
+        <dt id="previousSecondFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousSecondFromDate.html">previousSecondFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousSecondFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous second from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="previousSecondFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousSecondFromNow.html">previousSecondFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous second from the current local time.
+  
+
+</dd>
+
+        <dt id="previousWeekFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousWeekFromDate.html">previousWeekFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousWeekFromDate-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span><span class="parameter" id="previousWeekFromDate-param-weekStartDay"><span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous week from the given <code>date</code>, based on the specified <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="previousWeekFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousWeekFromNow.html">previousWeekFromNow</a></span><span class="signature">(<wbr><span class="parameter" id="previousWeekFromNow-param-weekStartDay">{<span>required</span> <span class="type-annotation"><a href="../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span>}</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous week from the current time, based on the specified <code>weekStartDay</code>.
+  
+
+</dd>
+
+        <dt id="previousYearFromDate" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousYearFromDate.html">previousYearFromDate</a></span><span class="signature">(<wbr><span class="parameter" id="previousYearFromDate-param-date"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous year from the given <code>date</code>.
+  
+
+</dd>
+
+        <dt id="previousYearFromNow" class="callable">
+  <span class="name"><a href="../time_finder/TimeFinder/previousYearFromNow.html">previousYearFromNow</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the <code>DateTime</code> representing the start of the previous year from the current local time.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">time_finder</a></li>
+    <li><a href="../time_finder/time_finder-library.html">time_finder</a></li>
+    <li class="self-crumb">TimeFinder class</li>
+</ol>
+
+
+    <h5>time_finder library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    time_finder
+      1.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

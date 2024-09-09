@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the findTimeUnitBoundaries method from the TimeFinder class, for the Dart programming language.">
+  <title>findTimeUnitBoundaries method - TimeFinder class - time_finder library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">time_finder</a></li>
+    <li><a href="../../time_finder/time_finder-library.html">time_finder.dart</a></li>
+    <li><a href="../../time_finder/TimeFinder-class.html">TimeFinder</a></li>
+    <li class="self-crumb">findTimeUnitBoundaries static method</li>
+  </ol>
+  <div class="self-name">findTimeUnitBoundaries</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="time_finder&#47;TimeFinder-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">findTimeUnitBoundaries</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="../../time_finder/TimeUnitBoundaries-class.html">TimeUnitBoundaries</a></span>
+<span class="name ">findTimeUnitBoundaries</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="findTimeUnitBoundaries-param-date">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">date</span>, </span></li>
+<li><span class="parameter" id="findTimeUnitBoundaries-param-timeUnit"><span>required</span> <span class="type-annotation"><a href="../../time_finder/TimeUnit.html">TimeUnit</a></span> <span class="parameter-name">timeUnit</span>, </span></li>
+<li><span class="parameter" id="findTimeUnitBoundaries-param-weekStartDay"><span class="type-annotation"><a href="../../time_finder/WeekStartDay.html">WeekStartDay</a></span> <span class="parameter-name">weekStartDay</span> = <span class="default-value">WeekStartDay.monday</span>}</span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Finds the start and end boundaries of the specified time unit for the given date.</p>
+<p>This method returns the start and end boundaries of the time unit
+(e.g., day, week, month, year) that the provided <code>date</code> falls within.
+The boundaries are calculated based on the specified time unit and
+the starting day of the week if the time unit is a week.</p>
+<p>The returned boundaries are in the form of a <code>TimeUnitBoundaries</code> object,
+which contains:</p>
+<ul>
+<li><code>start</code>: The start of the specified time unit. For example, if the
+<code>timeUnit</code> is <code>month</code>, <code>start</code> will be the first moment of the first day
+of that month.</li>
+<li><code>end</code>: The end of the specified time unit, which is the very start of
+the next time unit. For example, if the <code>timeUnit</code> is <code>month</code>, <code>end</code>
+will be the very start of the first day of the next month.</li>
+<li><code>originDate</code>: The original <code>date</code> passed to the method.</li>
+</ul>
+<p>If <code>timeUnit</code> is <code>TimeUnit.week</code>, the <code>weekStartDay</code> parameter determines
+the day on which the week starts. By default, this is set to Monday.</p>
+<p>Example usage:</p>
+<pre class="language-dart"><code class="language-dart">DateTime date = DateTime.now();
+TimeUnitBoundaries boundaries = findTimeUnitBoundaries(
+  date: date,
+  timeUnit: TimeUnit.month,
+);
+// boundaries.start will be the first day of the current month.
+// boundaries.end will be the last day of the current month.
+// boundaries.originDate will be the original date passed in.
+</code></pre>
+<p>Parameters:</p>
+<ul>
+<li><code>date</code> (<code>DateTime</code>): The date for which to find the time unit boundaries.</li>
+<li><code>timeUnit</code> (<code>TimeUnit</code>): The time unit (e.g., day, week, month, year) to find the boundaries for.</li>
+<li><code>weekStartDay</code> (<code>WeekStartDay</code>): The day on which the week starts, used only if the <code>timeUnit</code> is <code>week</code>.</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>TimeUnitBoundaries</code>: An object containing the start, end, and the original date.</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">&#47;&#47;&#47;
+&#47;&#47;&#47; If `timeUnit` is `TimeUnit.week`, the `weekStartDay` parameter determines
+&#47;&#47;&#47; the day on which the week starts. By default, this is set to Monday.
+&#47;&#47;&#47;
+&#47;&#47;&#47; Example usage:
+&#47;&#47;&#47; ```dart
+&#47;&#47;&#47; DateTime date = DateTime.now();
+&#47;&#47;&#47; TimeUnitBoundaries boundaries = findTimeUnitBoundaries(
+&#47;&#47;&#47;   date: date,
+&#47;&#47;&#47;   timeUnit: TimeUnit.month,
+&#47;&#47;&#47; );
+&#47;&#47;&#47; &#47;&#47; boundaries.start will be the first day of the current month.
+&#47;&#47;&#47; &#47;&#47; boundaries.end will be the last day of the current month.
+&#47;&#47;&#47; &#47;&#47; boundaries.originDate will be the original date passed in.
+&#47;&#47;&#47; ```
+&#47;&#47;&#47;
+&#47;&#47;&#47; Parameters:
+&#47;&#47;&#47; - `date` (`DateTime`): The date for which to find the time unit boundaries.
+&#47;&#47;&#47; - `timeUnit` (`TimeUnit`): The time unit (e.g., day, week, month, year) to find the boundaries for.
+&#47;&#47;&#47; - `weekStartDay` (`WeekStartDay`): The day on which the week starts, used only if the `timeUnit` is `week`.
+&#47;&#47;&#47;
+&#47;&#47;&#47; Returns:
+&#47;&#47;&#47; - `TimeUnitBoundaries`: An object containing the start, end, and the original date.
+static TimeUnitBoundaries findTimeUnitBoundaries({
+  required DateTime date,
+  required TimeUnit timeUnit,
+  WeekStartDay weekStartDay = WeekStartDay.monday,
+}) =&gt;
+    UnitBoundaryFinder.findBoundaries(
+      date: date,
+      timeUnit: timeUnit,
+      offset: 0,
+    );</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">time_finder</a></li>
+    <li><a href="../../time_finder/time_finder-library.html">time_finder</a></li>
+    <li><a href="../../time_finder/TimeFinder-class.html">TimeFinder</a></li>
+    <li class="self-crumb">findTimeUnitBoundaries static method</li>
+</ol>
+
+
+    <h5>TimeFinder class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    time_finder
+      1.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
