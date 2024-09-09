@@ -1,3 +1,3 @@
 ## 1.0.1
 
-- Updated description
+- Updated description in pubspec.yaml
